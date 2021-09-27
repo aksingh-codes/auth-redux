@@ -50,6 +50,8 @@ const SignIn = ({isSignedIn, signIn}) => {
                 </form>
                 <br /><br /><br />
                 <Link to='/sign-up'>Sign Up</Link>
+                <br />
+                <Link to='/'>Home</Link>
             </div>
         )
         

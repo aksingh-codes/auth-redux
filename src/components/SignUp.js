@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
@@ -6,15 +7,28 @@ const SignUp = ({ isSignedIn }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confPassword, setConfPassword] = useState('')
-    const request = {email, password, confPassword}
+    const [error, setError] = useState('')
+    const [message, setMessage] = useState('')
 
     const handleSubmit = e => {
         e.preventDefault()
-        // sign up request
-        // if success 
-            // show success message
-        // else on failure
-            // show error message
+
+        axios.post('https://api-authnode.herokuapp.com/SignUp',{
+            "Email": email,
+            "Password": password,
+            "ConfirmPassword": confPassword
+        }).then(
+            (r) => {
+                if (r.data.Email) {
+                    setMessage('You are Successfully Signed Up!')
+                }
+                else {
+                    setError(r.data)
+                }
+            }
+        ).catch(
+            err => setError(err)
+        )
     }
 
     return (
@@ -34,9 +48,13 @@ const SignUp = ({ isSignedIn }) => {
                     <input type="password" name="confPassword" value={confPassword} onChange={(e) => setConfPassword(e.target.value)} />
                     <br />
                     <button>Sign Up</button>
+                    {error && alert(error)}
+                    {message && alert(message)}
                 </form>
                 <br /><br /><br />
                 <Link to='/sign-in'>Sign In</Link>
+                <br />
+                <Link to='/'>Home</Link>
             </div>
         )
     )
