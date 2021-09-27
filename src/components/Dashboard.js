@@ -1,11 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { signOut } from '../redux/actions'
 
-const Dashboard = () => {
+const Dashboard = ({signOut}) => {
     return (
         <div>
-            Welcome to the DASHBOARD
+            <h1>Welcome to the DASHBOARD</h1>
+            <br />
+            <button onClick={() => signOut()}>Sign Out</button>
         </div>
     )
 }
 
-export default Dashboard
+export default connect(null, {signOut})(Dashboard)

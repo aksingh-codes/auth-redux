@@ -1,9 +1,9 @@
 const INITIAL_STATE = {
-    isSignedIn: null
+    isSignedIn: null,
+    userId: 'this will not be stored in localstorage'
 }
 
-// argument = something 
-// means we are setting default value
+
 const authReducer = (state = INITIAL_STATE , action) => {
     switch (action.type) {
         case 'SIGN_IN':
