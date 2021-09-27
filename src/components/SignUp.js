@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect, useHistory } from 'react-router-dom'
-import {Alert, Button, Form, Input} from 'antd'
+import {Alert} from 'antd'
 
 const SignUp = ({ isSignedIn }) => {
     const history = useHistory()

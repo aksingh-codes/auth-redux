@@ -20,6 +20,7 @@ const SignIn = ({isSignedIn, signIn}) => {
         }).then(
             (r) => {
                 if (r.data.msg && r.data.msg === 'Succesfully Logged In') {
+                    setMessage(r.data.msg)
                     signIn()
                 } else if (r.data && r.data.slice(0,5) === 'Error') {
                     setError(r.data)
