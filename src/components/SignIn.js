@@ -31,6 +31,12 @@ const SignIn = ({isSignedIn, signIn}) => {
             }
         ).catch(
             err => setError(err)
+        ).finally(
+            () =>
+            setTimeout(() => {
+                setMessage('')
+                setError('')
+            }, 2000)
         )
     }
 

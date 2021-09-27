@@ -33,6 +33,12 @@ const SignUp = ({ isSignedIn }) => {
             }
         ).catch(
             err => setError(err)
+        ).finally(
+            () =>
+            setTimeout(() => {
+                setMessage('')
+                setError('')
+            }, 2000)
         )
     }
 
