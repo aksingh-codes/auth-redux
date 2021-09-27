@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { signIn } from '../redux/actions'
 import axios from 'axios'
+import { Alert } from 'antd'
 
 const SignIn = ({isSignedIn, signIn}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
+    const [message, setMessage] = useState('')
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -37,6 +39,9 @@ const SignIn = ({isSignedIn, signIn}) => {
         : ( 
             <div>
             <h1>Sign IN</h1>
+                {error && <Alert message={error} type='error' />}
+                {message && <Alert message={message} type='success' />}
+                <br />
                 <form onSubmit={handleSubmit}>
                     <label>Email: </label>
                     <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />

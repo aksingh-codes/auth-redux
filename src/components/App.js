@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 import Home from './Home'
@@ -9,12 +9,14 @@ import PrivateRoute from './PrivateRoute'
 const App = () => {
     return (
         <div>
-            <BrowserRouter>
+            <HashRouter>
+                <Switch>
                 <Route exact path='/' component={Home} />
-                <Route exact path='/sign-in' component={SignIn} />
-                <Route exact path='/sign-up' component={SignUp} />
-                <PrivateRoute exact path='/dashboard' component={Dashboard} />
-            </BrowserRouter>
+                <Route path='/sign-in' component={SignIn} />
+                <Route path='/sign-up' component={SignUp} />
+                <PrivateRoute path='/dashboard' component={Dashboard} />
+                </Switch>
+            </HashRouter>
         </div>
     )
 }
